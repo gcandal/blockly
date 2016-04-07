@@ -43,7 +43,7 @@ goog.require('goog.userAgent');
 /**
  * Class for a workspace.  This is an onscreen area with optional trashcan,
  * scrollbars, bubbles, and dragging.
- * @param {!Object} options Dictionary of options.
+ * @param {!Blockly.Options} options Dictionary of options.
  * @extends {Blockly.Workspace}
  * @constructor
  */
@@ -428,7 +428,7 @@ Blockly.WorkspaceSvg.prototype.traceOn = function(armed) {
  * @param {?string} id ID of block to find.
  */
 Blockly.WorkspaceSvg.prototype.highlightBlock = function(id) {
-  if (this.traceOn_ && Blockly.dragMode_ != 0) {
+  if (this.traceOn_ && Blockly.dragMode_ != Blockly.DRAG_NONE) {
     // The blocklySelectChange event normally prevents this, but sometimes
     // there is a race condition on fast-executing apps.
     this.traceOn(false);

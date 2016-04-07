@@ -267,7 +267,7 @@ Blockly.Mutator.prototype.setVisible = function(visible) {
  * @private
  */
 Blockly.Mutator.prototype.workspaceChanged_ = function() {
-  if (Blockly.dragMode_ == 0) {
+  if (Blockly.dragMode_ == Blockly.DRAG_NONE) {
     var blocks = this.workspace_.getTopBlocks(false);
     var MARGIN = 20;
     for (var b = 0, block; block = blocks[b]; b++) {
@@ -359,7 +359,7 @@ Blockly.Mutator.reconnect = function(connectionChild, block, inputName) {
   var currentParent = connectionChild.targetBlock();
   if ((!currentParent || currentParent == block) &&
       connectionParent.targetConnection != connectionChild) {
-    if (connectionParent.targetConnection) {
+    if (connectionParent.isConnected()) {
       // There's already something connected here.  Get rid of it.
       connectionParent.disconnect();
     }
