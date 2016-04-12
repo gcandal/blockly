@@ -375,10 +375,13 @@ Blockly.Flyout.prototype.show = function(xmlList) {
   }
   this.buttons_.length = 0;
 
-  if (xmlList == Blockly.Variables.NAME_TYPE) {
+  if ((typeof xmlList == "string")
+        && xmlList.startsWith(Blockly.Variables.NAME_TYPE)) {
+    var type = xmlList.split("_")[1];
+    type = type ? type : null;
     // Special category for variables.
     xmlList =
-        Blockly.Variables.flyoutCategory(this.workspace_.targetWorkspace);
+        Blockly.Variables.flyoutCategory(this.workspace_.targetWorkspace, type);
   } else if (xmlList == Blockly.Procedures.NAME_TYPE) {
     // Special category for procedures.
     xmlList =

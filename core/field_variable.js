@@ -41,10 +41,11 @@ goog.require('goog.string');
  * @extends {Blockly.FieldDropdown}
  * @constructor
  */
-Blockly.FieldVariable = function(varname, opt_validator) {
+Blockly.FieldVariable = function(varname, opt_validator, type) {
   Blockly.FieldVariable.superClass_.constructor.call(this,
       Blockly.FieldVariable.dropdownCreate, opt_validator);
   this.setValue(varname || '');
+  this.type = type;
 };
 goog.inherits(Blockly.FieldVariable, Blockly.FieldDropdown);
 
@@ -126,7 +127,7 @@ Blockly.FieldVariable.prototype.setValue = function(newValue) {
 Blockly.FieldVariable.dropdownCreate = function() {
   if (this.sourceBlock_ && this.sourceBlock_.workspace) {
     var variableList =
-        Blockly.Variables.allVariables(this.sourceBlock_.workspace);
+        Blockly.Variables.allVariables(this.sourceBlock_.workspace, this.type);
   } else {
     var variableList = [];
   }

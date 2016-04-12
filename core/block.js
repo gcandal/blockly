@@ -627,11 +627,11 @@ Blockly.Block.prototype.getField = function(name) {
  * Return all variables referenced by this block.
  * @return {!Array.<string>} List of variable names.
  */
-Blockly.Block.prototype.getVars = function() {
+Blockly.Block.prototype.getVars = function(type) {
   var vars = [];
   for (var i = 0, input; input = this.inputList[i]; i++) {
     for (var j = 0, field; field = input.fieldRow[j]; j++) {
-      if (field instanceof Blockly.FieldVariable) {
+      if (field instanceof Blockly.FieldVariable && field.type == type) {
         vars.push(field.getValue());
       }
     }
@@ -1080,8 +1080,12 @@ Blockly.Block.prototype.interpolate_ = function(message, args, lastDummyAlign) {
             }
             // Fall through if FieldDate is not compiled in.
           default:
+            if(element['type'].endsWith('_field_variable')) {
+              var type = element['type'].split('_')[0];
+              field = new Blockly.FieldVariable(element['variable'], null, type);
+            }
             // Unknown field.
-            if (element['alt']) {
+            else if (element['alt']) {
               element = element['alt'];
               altRepeat = true;
             }
