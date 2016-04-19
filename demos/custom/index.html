@@ -13,8 +13,10 @@
   <script src="../../blocks/colour.js"></script>
   <script src="../../blocks/variables.js"></script>
   <script src="../../blocks/procedures.js"></script>
+  <script src="../../blocks/inferboilerplate.js"></script>
   <script src="../../blocks/inferbool_variables.js"></script>
   <script src="../../blocks/inferdouble_variables.js"></script>
+  <script src="../blockfactory/blocks.js"></script>
   <script src="../../../blockly-generator-csharp/csharp.js"></script>
   <script src="../../../blockly-generator-csharp/csharp/logic.js"></script>
   <script src="../../../blockly-generator-csharp/csharp/loops.js"></script>
@@ -23,6 +25,7 @@
   <script src="../../../blockly-generator-csharp/csharp/lists.js"></script>
   <script src="../../../blockly-generator-csharp/csharp/colour.js"></script>
   <script src="../../../blockly-generator-csharp/csharp/variables.js"></script>
+  <script src="../../../blockly-generator-csharp/csharp/inferboilerplate.js"></script>
   <script src="../../../blockly-generator-csharp/csharp/inferbool_variables.js"></script>
   <script src="../../../blockly-generator-csharp/csharp/inferdouble_variables.js"></script>
   <script src="../../../blockly-generator-csharp/csharp/procedures.js"></script>
@@ -48,10 +51,11 @@
   <div id="blocklyDiv" style="height: 480px;"></div>
 
   <xml id="toolbox" style="display: none">
-    <category id="catInfer" colour="210">
-        <category id="catInferVariables" colour="210">
-          <category id="catInferBool" colour="120" custom="VARIABLE_inferbool"></category>
-          <category id="catInferDouble" colour="120" custom="VARIABLE_inferdouble"></category>
+    <category id="catInfer" colour="0">
+      <block type="inferboilerplate"></block>
+        <category id="catInferVariables" colour="0">
+          <category id="catInferBool" colour="45" custom="VARIABLE_inferbool"></category>
+          <category id="catInferDouble" colour="240" custom="VARIABLE_inferdouble"></category>
         </category>
     </category>
     <category id="catLogic" colour="210">

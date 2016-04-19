@@ -21,23 +21,9 @@
 /**
  * Create a namespace for the application.
  */
-var Code = {
-  preBoiler: `using System;
-using System.Collections.Generic;
-using System.Text;
-using MicrosoftResearch.Infer.Models;
-using MicrosoftResearch.Infer;
+var Code = {};
 
-namespace MicrosoftResearch.Infer.Tutorials
-{
-\tpublic class FirstExample
-\t{
-\t\tpublic void Run()
-\t\t{`,
-  postBoiler: `\t\t}
-\t}
-}`
-};
+Code.DEFAULT_XML = '<xml><block type="inferboilerplate" deletable="false" movable="false"></block></xml>';
 
 /**
  * Lookup for names of supported languages.  Keys should be in ISO 639 format.
@@ -323,8 +309,7 @@ Code.renderContent = function() {
   } else if (content.id == 'content_csharp') {
     var code = Blockly.CSharp.workspaceToCode(Code.workspace);
     if(Code.showBoilerE.checked) {
-      code = code.split("\n").map(function(line) { return "\t\t\t" + line;}).join("\n");
-      code = Code.preBoiler + "\n" + code + "\n" + Code.postBoiler;
+
     }
     content.textContent = code;
     if (typeof prettyPrintOne == 'function') {
@@ -357,7 +342,7 @@ Code.init = function() {
             wheel: true}
       });
 
-  Code.loadBlocks('');
+  Code.loadBlocks(Code.DEFAULT_XML);
 
   for (var i = 0; i < Code.TABS_.length; i++) {
     var name = Code.TABS_[i];

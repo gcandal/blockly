@@ -6,6 +6,12 @@ goog.provide('Blockly.Msg.en');
 
 goog.require('Blockly.Msg');
 
+Blockly.Msg.CSHARP_BOILER = "C# Boilerplate";
+Blockly.Msg.INFERENCE_ENGINE_ALGORITHM = "Inference engine algorithm:";
+Blockly.Msg.EP = "Expectation Propagation";
+Blockly.Msg.VMP = "Variational Message Passing";
+Blockly.Msg.GIBBS = "Gibbs Sampling";
+
 Blockly.Msg.ADD_COMMENT = "Add Comment";
 Blockly.Msg.AUTH = "Please authorize this app to enable your work to be saved and to allow it to be shared by you.";
 Blockly.Msg.CHANGE_VALUE_TITLE = "Change value:";

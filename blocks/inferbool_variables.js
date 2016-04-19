@@ -32,7 +32,7 @@ goog.require('Blockly.Blocks');
 /**
  * Common HSV hue for all blocks in this category.
  */
-Blockly.Blocks.inferbool_variables.HUE = 330;
+Blockly.Blocks.inferbool_variables.HUE = 45;
 
 Blockly.Blocks['inferbool_variables_get'] = {
   /**

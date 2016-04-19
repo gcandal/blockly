@@ -32,7 +32,7 @@ goog.require('Blockly.Blocks');
 /**
  * Common HSV hue for all blocks in this category.
  */
-Blockly.Blocks.inferdouble_variables.HUE = 330;
+Blockly.Blocks.inferdouble_variables.HUE = 240;
 
 Blockly.Blocks['inferdouble_variables_get'] = {
   /**

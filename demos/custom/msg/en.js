@@ -23,6 +23,6 @@ var MSG = {
   badXml: "Error parsing XML:\n%1\n\nSelect 'OK' to abandon your changes or 'Cancel' to further edit the XML.",
   catInfer: "Infer",
   catInferVariables: "Random variables",
-  catInferBool: "Boolean",
-  catInferDouble: "Number",
+  catInferBool: "Boolean Variables",
+  catInferDouble: "Numeric Variables",
 };
