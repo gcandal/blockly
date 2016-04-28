@@ -403,7 +403,8 @@ Code.initLanguage = function() {
 
   var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists',
                     'catColour', 'catVariables', 'catFunctions', 'catInfer',
-                    'catInferVariables', 'catInferBool', 'catInferDouble'];
+                    'catInferVariables', 'catInferBool', 'catInferDouble',
+                    'catInferBoolD', 'catInferDoubleD'];
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);
   }

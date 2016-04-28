@@ -84,7 +84,8 @@ Blockly.Blocks['inferbool_variables_set'] = {
         },
         {
           "type": "input_value",
-          "name": "VALUE"
+          "name": "VALUE",
+          "check": "inferbool"
         }
       ],
       "previousStatement": null,
@@ -97,4 +98,20 @@ Blockly.Blocks['inferbool_variables_set'] = {
   },
   contextMenuType_: 'inferbool_variables_get',
   customContextMenu: Blockly.Blocks['inferbool_variables_get'].customContextMenu
+};
+
+Blockly.Blocks['infer_observed'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.inferbool_variables.HUE)
+    this.appendValueInput("DISTR")
+        .setCheck("inferbool")
+        .appendField("Observed value of");
+    this.appendValueInput("VALUE")
+        .setCheck("Boolean")
+        .appendField("is");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
 };

@@ -84,7 +84,8 @@ Blockly.Blocks['inferdouble_variables_set'] = {
         },
         {
           "type": "input_value",
-          "name": "VALUE"
+          "name": "VALUE",
+          "check": "inferdouble"
         }
       ],
       "previousStatement": null,

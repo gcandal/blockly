@@ -25,4 +25,7 @@ var MSG = {
   catInferVariables: "Random variables",
   catInferBool: "Boolean Variables",
   catInferDouble: "Numeric Variables",
+  catInferDistributions: "Random Variables",
+  catInferBoolD: "Boolean Variables",
+  catInferDoubleD: "Numeric Variables"
 };
