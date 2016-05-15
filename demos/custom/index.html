@@ -37,7 +37,10 @@
   <p>
     <button id="tab_csharp">C#</button>
     <button id="tab_xml">XML</button>
-    <button onClick="Code.loadXML()">Load XML</button>
+    <button onClick="Code.saveFile()">Save</button>
+    <button onClick="Code.loadFile()">Load</button>
+    <a href="" id="virtualNode" style="display: none;"></a>
+    <input type="file" id="virtualInputNode" style="display: none;"></a>
     <button>
       <label for="showBoiler" id="showBoilerLabel">Show C# boilerplate</label>
       <input type="checkbox" id="showBoiler" checked />

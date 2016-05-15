@@ -245,9 +245,51 @@ Code.TABS_ = ['xml', 'csharp'];
 
 Code.selected = false;
 
-Code.loadXML = function() {
-  var xmlTextarea = document.getElementById('content_xml');
-  var xmlText = xmlTextarea.value;
+
+Code.handleFileSelect = function() {
+  if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+    alert('The File APIs are not fully supported in this browser.');
+    return;
+  }
+
+  var virtualInputNode = document.getElementById('virtualInputNode');
+  if (!virtualInputNode) {
+    alert('virtualInputNode not found');
+  } else {
+    var fileReader = new FileReader();
+    var file = virtualInputNode.files[0];
+
+    function receivedText() {
+      var fileContent = fileReader.result;
+      Code.loadXML(fileContent);
+    }
+
+    fileReader.onload = receivedText;
+    fileReader.readAsText(file);
+  }
+}
+
+Code.loadFile = function() {
+  var virtualInputNode = document.getElementById('virtualInputNode');
+  virtualInputNode.click();
+  virtualInputNode.value = null;
+}
+
+Code.saveFile = function() {
+  var date = new Date();
+  var filename = date.getDate()  + "-" + (date.getMonth()+1) + "-"
+                + date.getFullYear() + " " + date.getHours() + ":"
+                + date.getMinutes() + ":" + date.getSeconds();
+  var xml = Blockly.Xml.workspaceToDom(Code.workspace);
+  var xmlText = new XMLSerializer().serializeToString(xml);
+  var virtualNode = document.getElementById('virtualNode');
+  var file = new Blob([xmlText], {type: 'text/xml'});
+  virtualNode.href = URL.createObjectURL(file);
+  virtualNode.download = filename;
+  virtualNode.click();
+}
+
+Code.loadXML = function(xmlText) {
   var xmlDom = null;
   try {
     xmlDom = Blockly.Xml.textToDom(xmlText);
@@ -360,6 +402,9 @@ Code.init = function() {
 
   // Lazy-load the syntax-highlighting.
   window.setTimeout(Code.importPrettify, 1);
+
+  var virtualInputNode = document.getElementById("virtualInputNode");
+  virtualInputNode.onchange = Code.handleFileSelect;
 };
 
 /**
