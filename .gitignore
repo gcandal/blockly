@@ -5,3 +5,9 @@ npm-debug.log
 .project
 *.pyc
 *.komodoproject
+*.cs
+*.dll
+*.pdb
+*.XML
+*.xml
+/webservice/GeneratedSource

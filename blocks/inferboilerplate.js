@@ -38,3 +38,16 @@ Blockly.Blocks['inferalgo'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['inferconstrain_true'] = {
+  init: function() {
+    this.setColour(0);
+    this.appendValueInput("DISTR")
+        .setCheck(["inferbool", "Boolean"])
+        .appendField("Constrain true");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};

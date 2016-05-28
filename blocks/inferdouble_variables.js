@@ -99,3 +99,19 @@ Blockly.Blocks['inferdouble_variables_set'] = {
   contextMenuType_: 'inferdouble_variables_get',
   customContextMenu: Blockly.Blocks['inferdouble_variables_get'].customContextMenu
 };
+
+Blockly.Blocks['inferdouble_observed'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.inferbool_variables.HUE);
+    this.appendValueInput("DISTR")
+        .setCheck("inferdouble")
+        .appendField("Observed value of");
+    this.appendValueInput("VALUE")
+        .setCheck("Number")
+        .appendField("is");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};

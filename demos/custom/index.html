@@ -32,19 +32,17 @@
   <script src="../../../blockly-generator-csharp/csharp/inferdouble_variables.js"></script>
   <script src="../../../blockly-generator-csharp/csharp/procedures.js"></script>
   <script src="code.js"></script>
+  <script src="jquery-2.2.3.min.js"></script>
 </head>
 <body>
   <p>
     <button id="tab_csharp">C#</button>
     <button id="tab_xml">XML</button>
+    <button onClick="Code.runCode()">Run</button>
     <button onClick="Code.saveFile()">Save</button>
     <button onClick="Code.loadFile()">Load</button>
     <a href="" id="virtualNode" style="display: none;"></a>
-    <input type="file" id="virtualInputNode" style="display: none;"></a>
-    <button>
-      <label for="showBoiler" id="showBoilerLabel">Show C# boilerplate</label>
-      <input type="checkbox" id="showBoiler" checked />
-    </button>
+    <input type="file" id="virtualInputNode" style="display: none;"/>
     <select id="languageMenu"></select>
     <button id="trashButton" class="notext" title="...">
       <img src='../../media/1x1.gif' class="trash icon21">
@@ -54,11 +52,14 @@
   <pre id="content_csharp" class="content"></pre>
   <textarea id="content_xml" class="content" wrap="off"></textarea>
   <div id="blocklyDiv" style="height: 480px;"></div>
+  <pre class="console console-empty" id="consoleOutput"></pre>
+  <pre class="console console-error console-empty" id="consoleErrorOutput"></pre>
 
   <xml id="toolbox" style="display: none">
     <category id="catInfer" colour="0">
       <block type="inferinfer"></block>
       <block type="inferalgo"></block>
+      <block type="inferconstrain_true"></block>
       <category id="catInferVariables" colour="0">
         <category id="catInferBool" colour="45" custom="VARIABLE_inferbool"></category>
         <category id="catInferDouble" colour="240" custom="VARIABLE_inferdouble"></category>
@@ -66,9 +67,13 @@
         <category id="catInferBoolD" colour="45">
           <block type="infer_bernoulli"></block>
           <block type="infer_bernoulli_c"></block>
-          <block type="infer_observed"></block>
+          <block type="inferbool_observed"></block>
         </category>
-        <category id="catInferDoubleD" colour="240"></category>
+        <category id="catInferDoubleD" colour="240">
+          <block type="infer_gaussianmeanvar"></block>
+          <block type="infer_newdouble"></block>
+          <block type="inferdouble_observed"></block>
+        </category>
     </category>
     <category id="catLogic" colour="210">
       <block type="controls_if"></block>

@@ -245,6 +245,35 @@ Code.TABS_ = ['xml', 'csharp'];
 
 Code.selected = false;
 
+Code.runCode = function() {
+  var consoleOutput = $('#consoleOutput');
+  var consoleErrorOutput = $('#consoleErrorOutput');
+  var code = Blockly.CSharp.workspaceToCode(Code.workspace);
+  consoleErrorOutput.text("");
+  consoleErrorOutput.addClass("console-empty");
+  consoleOutput.text("Running your code in an external service...");
+  consoleOutput.removeClass("console-empty");
+  $.ajax(
+      'http://localhost:5000/run',
+      {
+          'data': code,
+          'type': 'POST',
+          'contentType': 'text/plain'
+      }
+  )
+      .always(function() {
+        consoleOutput.text("");
+        consoleOutput.addClass("console-empty");
+      })
+      .done(function(response) {
+        consoleOutput.text(response);
+        consoleOutput.removeClass("console-empty");
+      })
+      .fail(function(response) {
+        consoleErrorOutput.text(response.responseText);
+        consoleErrorOutput.removeClass("console-empty");
+      });
+};
 
 Code.handleFileSelect = function() {
   if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
@@ -259,21 +288,19 @@ Code.handleFileSelect = function() {
     var fileReader = new FileReader();
     var file = virtualInputNode.files[0];
 
-    function receivedText() {
+    fileReader.onload = function() {
       var fileContent = fileReader.result;
       Code.loadXML(fileContent);
-    }
-
-    fileReader.onload = receivedText;
+    };
     fileReader.readAsText(file);
   }
-}
+};
 
 Code.loadFile = function() {
   var virtualInputNode = document.getElementById('virtualInputNode');
   virtualInputNode.click();
   virtualInputNode.value = null;
-}
+};
 
 Code.saveFile = function() {
   var date = new Date();
@@ -287,7 +314,7 @@ Code.saveFile = function() {
   virtualNode.href = URL.createObjectURL(file);
   virtualNode.download = filename;
   virtualNode.click();
-}
+};
 
 Code.loadXML = function(xmlText) {
   var xmlDom = null;
@@ -350,9 +377,6 @@ Code.renderContent = function() {
     xmlTextarea.focus();
   } else if (content.id == 'content_csharp') {
     var code = Blockly.CSharp.workspaceToCode(Code.workspace);
-    if(Code.showBoilerE.checked) {
-
-    }
     content.textContent = code;
     if (typeof prettyPrintOne == 'function') {
       code = content.innerHTML;
@@ -391,9 +415,6 @@ Code.init = function() {
     Code.bindClick('tab_' + name,
         function(name_) {return function() {Code.tabClick(name_);};}(name));
   }
-
-  Code.showBoilerE = document.getElementById('showBoiler');
-  Code.showBoilerE.addEventListener('change', Code.renderContent);
   document.getElementById('content_xml').addEventListener('mouseup', function() {
       Blockly.fireUiEvent(window, 'resize');
   });

@@ -100,9 +100,9 @@ Blockly.Blocks['inferbool_variables_set'] = {
   customContextMenu: Blockly.Blocks['inferbool_variables_get'].customContextMenu
 };
 
-Blockly.Blocks['infer_observed'] = {
+Blockly.Blocks['inferbool_observed'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.inferbool_variables.HUE)
+    this.setColour(Blockly.Blocks.inferbool_variables.HUE);
     this.appendValueInput("DISTR")
         .setCheck("inferbool")
         .appendField("Observed value of");
