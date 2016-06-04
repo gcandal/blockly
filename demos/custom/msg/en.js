@@ -22,10 +22,10 @@ var MSG = {
   xmlError: "Could not load your saved file. Perhaps it was created with a different version of Blockly?",
   badXml: "Error parsing XML:\n%1\n\nSelect 'OK' to abandon your changes or 'Cancel' to further edit the XML.",
   catInfer: "Infer",
-  catInferVariables: "Random variables",
-  catInferBool: "Boolean Variables",
-  catInferDouble: "Numeric Variables",
-  catInferDistributions: "Random Variables",
-  catInferBoolD: "Boolean Variables",
-  catInferDoubleD: "Numeric Variables"
+  catInferVariables: "Random Variables",
+  catInferBool: "Boolean",
+  catInferDouble: "Numeric",
+  catInferDistributions: "Random Operators",
+  catInferBoolD: "Boolean",
+  catInferDoubleD: "Numeric"
 };

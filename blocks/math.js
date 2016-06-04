@@ -551,3 +551,20 @@ Blockly.Blocks['math_random_float'] = {
     });
   }
 };
+
+Blockly.Blocks['math_normal'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Sample from normal distribution");
+    this.appendValueInput("MEAN")
+        .setCheck("Number")
+        .appendField("with Mean");
+    this.appendValueInput("STD_DEV")
+        .setCheck("Number")
+        .appendField("and Standard Deviation");
+    this.setOutput(true, "Number");
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.setTooltip('Generates a random sample from a normal distribution.');
+    this.setHelpUrl('http://research.microsoft.com/en-us/um/cambridge/projects/infernet/codedoc/html/M_MicrosoftResearch_Infer_Maths_Rand_Normal_2.htm');
+  }
+};

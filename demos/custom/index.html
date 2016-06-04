@@ -71,6 +71,8 @@
         </category>
         <category id="catInferDoubleD" colour="240">
           <block type="infer_gaussianmeanvar"></block>
+          <block type="infer_gaussianmeanprec"></block>
+          <block type="infer_gammashapescale"></block>
           <block type="infer_newdouble"></block>
           <block type="inferdouble_observed"></block>
         </category>
@@ -190,6 +192,18 @@
         <value name="HIGH">
           <shadow type="math_number">
             <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_normal">
+        <value name="MEAN">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="STD_DEV">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
           </shadow>
         </value>
       </block>

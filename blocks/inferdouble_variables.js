@@ -102,7 +102,7 @@ Blockly.Blocks['inferdouble_variables_set'] = {
 
 Blockly.Blocks['inferdouble_observed'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.inferbool_variables.HUE);
+    this.setColour(Blockly.Blocks.inferdouble_variables.HUE);
     this.appendValueInput("DISTR")
         .setCheck("inferdouble")
         .appendField("Observed value of");

@@ -48,6 +48,40 @@ Blockly.Blocks['infer_gaussianmeanvar'] = {
     this.setHelpUrl('http://research.microsoft.com/en-us/um/cambridge/projects/infernet/codedoc/html/M_MicrosoftResearch_Infer_Models_Variable_GaussianFromMeanAndVariance.htm');
   }
 };
+Blockly.Blocks['infer_gaussianmeanprec'] = {
+  init: function() {
+    this.setColour(240);
+    this.appendDummyInput()
+        .appendField("Gaussian");
+    this.setOutput(true, "inferdouble");
+    this.appendValueInput("MEAN")
+        .setCheck(["Number", "inferdouble"])
+        .appendField("Mean:");
+    this.appendValueInput("PREC")
+        .setCheck(["Number", "inferdouble"])
+        .appendField("Precision:");
+    this.setTooltip('Creates a Gaussian-distributed random variable with specified mean and precision.');
+    this.setHelpUrl('http://research.microsoft.com/en-us/um/cambridge/projects/infernet/codedoc/html/M_MicrosoftResearch_Infer_Models_Variable_GaussianFromMeanAndPrecision_1.htm');
+  }
+};
+
+
+Blockly.Blocks['infer_gammashapescale'] = {
+  init: function() {
+    this.setColour(240);
+    this.appendDummyInput()
+        .appendField("Gamma");
+    this.setOutput(true, "inferdouble");
+    this.appendValueInput("SHAPE")
+        .setCheck(["Number", "inferdouble"])
+        .appendField("Shape:");
+    this.appendValueInput("SCALE")
+        .setCheck(["Number", "inferdouble"])
+        .appendField("Scale:");
+    this.setTooltip('Creates a Gamma-distributed random variable with specified shape and scale parameters.');
+    this.setHelpUrl('http://research.microsoft.com/en-us/um/cambridge/projects/infernet/codedoc/html/M_MicrosoftResearch_Infer_Models_Variable_GammaFromShapeAndScale_1.htm');
+  }
+};
 
 Blockly.Blocks['infer_newdouble'] = {
   init: function() {
